@@ -1,5 +1,6 @@
-
-clear all
+close all
+clear 
+%%
 % Specify project requirements
 
 Vimax = 18;
@@ -56,8 +57,8 @@ fs = 2e5; % 200kHz
 % Determine the transformer current ripple
 Pin = Po/eff_est;
 I_in_avg = Pin./Vin_vec;
-I_pri_avg = I_in_avg./D_vec;
-Delta_I_Lm_vec = I_pri_avg.*ripple_ratio;
+I_Lm_avg = I_in_avg./D_vec;
+Delta_I_Lm_vec = I_Lm_avg.*ripple_ratio;
 
 Lmvec = zeros(1,50);
 
@@ -106,6 +107,7 @@ grid on
 gap = 0.1203e-3;
 N_pri = 6;
 
+
 %% Determine Cable Length and Type
 
 % Set cable diameters:
@@ -118,7 +120,42 @@ secondary_parallel = 1; % how many parallel cables there are
 secondary_cable_diameter = 1.4e-3;
 secondary_cable_count = N_pri*N*secondary_parallel;
 
-total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count
+total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
 
-window_area = ((B-C)/2)*2*E
-fill_factor = total_cable_area/window_area
+window_area = ((B-C)/2)*2*E;
+fill_factor_litz = total_cable_area/window_area;
+
+
+%% AWG
+resistivity = 1.68e-8;
+skin_depth = sqrt(resistivity/(pi*fs*mu0*1)) ; % in meters
+
+strand_radius = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
+
+risk_factor = 0.5;
+strand_pri = max(I_in_avg)/(0.182*risk_factor); % 29 AWG current rating 0.182 A
+strand_sec = (Po/Vo)/(0.182*risk_factor) ; % 29 AWG current rating 0.182 A
+
+
+% for primary side
+
+%% Determine Cable Length and Type
+
+% Set cable diameters:
+
+primary_parallel = strand_pri; % how many parallel cables there are 
+primary_cable_diameter =  0.28702e-3;
+primary_cable_count = N_pri*primary_parallel;
+
+secondary_parallel = strand_sec; % how many parallel cables there are 
+secondary_cable_diameter = 0.28702e-3;
+secondary_cable_count = N_pri*N*secondary_parallel;
+
+total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
+
+window_area = ((B-C)/2)*2*E;
+fill_factor_awg = total_cable_area/window_area;
+
+
+
+
