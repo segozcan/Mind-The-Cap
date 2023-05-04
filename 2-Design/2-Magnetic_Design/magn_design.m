@@ -46,7 +46,7 @@ Vin_vec = linspace(12, 18, 50);
 
 % Choose max duty as 0.5, calculate N
 Dmax = 0.5;
-N = (Vo/Vimin)*(1-Dmax)/Dmax;
+N = (Vo/Vimin)*(1-Dmax)/Dmax; % N2/N1 = 4
 % Duty range is between 0.4 & 0.5
 D_vec = (Vo./(Vin_vec*N))./(1+Vo./(Vin_vec*N));
 
@@ -55,21 +55,22 @@ fs = 2e5; % 200kHz
 
 % Determine the transformer current ripple
 Pin = Po/eff_est;
-I_pri_avg = Pin./Vin_vec;
-Delta_I_Lm = I_pri_avg.*ripple_ratio;
+I_in_avg = Pin./Vin_vec;
+I_pri_avg = I_in_avg./D_vec;
+Delta_I_Lm_vec = I_pri_avg.*ripple_ratio;
 
 Lmvec = zeros(1,50);
 
 % Find required Lm for different input voltages
 for i=1:50
-    Lmvec(i) = (Vin_vec(i)*D_vec(i))/(fs*Delta_I_Lm(i));
+    Lmvec(i) = (Vin_vec(i)*D_vec(i))/(fs*Delta_I_Lm_vec(i));
 end
 
 figure;
 plot(Vin_vec, Lmvec);
 
-% Choose Lm as 30uH to satisfy ripple ratio requirement for all inputs
-Lm = 30e-6;
+% Choose Lm as 12uH to satisfy ripple ratio requirement for all inputs
+Lm = 12e-6;
 
 %% Choose Gap Length and Turn Number
 
@@ -81,6 +82,7 @@ A = 30.80e-3;
 B = 19.50e-3;
 C = 7.20e-3;
 F = 7.30e-3;
+E = 9.3e-3;
 
 % Calculate areas from core parameters
 Asmall = F*(A-B)/2;
@@ -101,8 +103,22 @@ grid on
 %exportgraphics(fig, "deneme.pdf")
 
 % Choose a gap value (A4 width = 0.1mm), corresponds to 9 turns
-gap = 0.1e-3;
-N_pri = 9;
+gap = 0.1203e-3;
+N_pri = 6;
 
 %% Determine Cable Length and Type
 
+% Set cable diameters:
+
+primary_parallel = 2; % how many parallel cables there are 
+primary_cable_diameter = 1.4e-3;
+primary_cable_count = N_pri*primary_parallel;
+
+secondary_parallel = 1; % how many parallel cables there are 
+secondary_cable_diameter = 1.4e-3;
+secondary_cable_count = N_pri*N*secondary_parallel;
+
+total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count
+
+window_area = ((B-C)/2)*2*E
+fill_factor = total_cable_area/window_area
