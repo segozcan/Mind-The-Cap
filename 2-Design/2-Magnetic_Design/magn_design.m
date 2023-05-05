@@ -33,14 +33,17 @@ for i=1:20
     Dmin_vec(i) = dmin;
 end
 
-figure;
+fig1 = figure;
 plot(N,Dmax_vec);
 hold on
 plot(N,Dmin_vec);
-hold on
 legend
+grid minor
+title("Duty cycle limits vs N")
+legend("D_{max}", "D_{min}")
+xlabel("Turns ratio N"), ylabel("Duty cycle")
 hold off
-
+exportgraphics(fig1, "../../4-Report/img/DvsN.pdf")
 %% Determine Lm
 clear dmin dmax Dmin_vec Dmax_vec d1 d2 i N
 Vin_vec = linspace(12, 18, 50);
@@ -67,9 +70,12 @@ for i=1:50
     Lmvec(i) = (Vin_vec(i)*D_vec(i))/(fs*Delta_I_Lm_vec(i));
 end
 
-figure;
+fig2= figure;
 plot(Vin_vec, Lmvec);
-
+grid minor
+xlabel("Input Voltage (V)"), ylabel("L_m value (H)")
+title("Lm for the ripple constraint vs. input voltage")
+exportgraphics(fig2,"../../4-Report/img/VinvsLm.pdf" )
 % Choose Lm as 12uH to satisfy ripple ratio requirement for all inputs
 Lm = 12e-6;
 
@@ -95,12 +101,12 @@ turns_pri_vec = linspace(1, 20, 20);
 reluctance_vec = (turns_pri_vec.^2)./Lm;
 gap_interval_vec = reluctance_vec.*(2*mu0*Asmall*Alarge)./(Alarge+2*Asmall);
 
-fig = figure;
+fig3 = figure;
 plot(turns_pri_vec, gap_interval_vec)
 title("Gap length vs turn number")
-figure;
-plot(turns_pri_vec, reluctance_vec)
-grid on
+xlabel("Primary side turn number"), ylabel("Air gap length (m)")
+grid minor
+exportgraphics(fig3, "../../4-Report/img/airgapvsturns.pdf")
 
 %exportgraphics(fig, "deneme.pdf")
 
@@ -161,11 +167,14 @@ Phi = (N_pri.*(I_pri_peak))./reluctance;
 B_field = (Phi)./((A-B)*F);
 B_field_2 = (Phi)./(C*F);
 
-
+figA = figure;
 plot(D_vec, B_field_2)
 title("Core flux density vs duty cycle")
 hold on
 plot(D_vec,B_field)
 grid minor
+xlabel("Duty cycle"), ylabel("Magnetic flux density (Wb/m^2)")
+legend("Middle leg", "Side leg", "Location", "north")
+exportgraphics(figA, "../../4-Report/img/B.pdf")
 
 
