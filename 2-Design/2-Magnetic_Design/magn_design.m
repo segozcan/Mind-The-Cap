@@ -152,12 +152,14 @@ secondary_cable_diameter = 0.9e-3;
 secondary_cable_count = N_pri*N*secondary_parallel;
 
 % https://www.elektrisola.com/en/Litz-Wire/Info
-litz_packing_factor = 1.28 ;
+% litz_packing_factor = 1.28 ;
 total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
-total_cable_area = litz_packing_factor*total_cable_area;
+% total_cable_area = litz_packing_factor*total_cable_area;
 
 window_area = ((B-C)/2)*2*E;
 fill_factor_litz = total_cable_area/window_area;
+
+% TO DO: winding configuration sec/2 : pri : sec/2
 
 
 
@@ -207,6 +209,7 @@ P_cu_pri = R_pri*5.3*5.3;
 P_cu_sec = R_sec*1.45*1.45;
 
 P_cu_pri + P_cu_sec ;
+
 
 
 
