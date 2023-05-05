@@ -116,9 +116,11 @@ N_pri = 9;
 cu_resistivity = 1.68e-8;
 skin_depth = sqrt(cu_resistivity/(pi*fs*mu0*1)) ; % in meters
 
-strand_radius = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
+strand_section = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
 
 risk_factor = 0.75;
+
+% TO DO: I_in should be RMS
 strand_pri = max(I_in_avg)/(0.182*risk_factor); % 29 AWG current rating 0.182 A
 strand_sec = (Po/Vo)/(0.182*risk_factor) ; % 29 AWG current rating 0.182 A
 % Determine Cable Length and Type
@@ -210,5 +212,7 @@ P_cu_sec = R_sec*1.45*1.45;
 
 P_cu_pri + P_cu_sec ;
 
+% https://downloads.hindawi.com/archive/2012/635715.pdf
+L_leak = (mu0*N_pri^2*(0.001*2+((A-B)/4))*(F*E+D*(C+2*(((A-B)/4)))))/(3*2^2*E^2)
 
 
