@@ -1,7 +1,6 @@
 close all
 clear 
-%%
-% Specify project requirements
+%% Specify project requirements
 
 Vimax = 18;
 Vimin = 12;
@@ -105,9 +104,9 @@ grid on
 %exportgraphics(fig, "deneme.pdf")
 
 % Choose a gap value (A4 width = 0.1mm), corresponds to 9 turns
-reluctance = 3000000 ;
-gap = 0.1203e-3;
-N_pri = 6;
+reluctance = 5333330 ;
+gap = 0.2151653e-3;
+N_pri = 8;
 
 
 %% Determine Cable Length and Type
@@ -137,13 +136,6 @@ strand_radius = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
 risk_factor = 0.5;
 strand_pri = max(I_in_avg)/(0.182*risk_factor); % 29 AWG current rating 0.182 A
 strand_sec = (Po/Vo)/(0.182*risk_factor) ; % 29 AWG current rating 0.182 A
-
-
-% for primary side
-
-%% Determine Cable Length and Type
-
-% Set cable diameters:
 
 primary_parallel = strand_pri; % how many parallel cables there are 
 primary_cable_diameter =  0.28702e-3;
