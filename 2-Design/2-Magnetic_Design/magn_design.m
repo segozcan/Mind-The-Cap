@@ -201,11 +201,19 @@ P_core = (P_center + P_sides)*2 ; % an error margin of 200 % is given
 % AC losses proximity and skin effect can be ignored
 % Length of the wires is estimated from the middle radius
 
-lenght_pri = primary_cable_count*1.28*(2*C+2*F);
-lenght_sec = secondary_cable_count*1.28*(((A+B)/2*2)+(5e-3+F)*2) ;
+end_winding_pri = 0.265;
+end_winding_sec = 0.080;
 
+lenght_pri = primary_cable_count*(2*(C+0.005+primary_cable_diameter/2)+2*(F+0.005+primary_cable_diameter/2));
+lenght_sec = secondary_cable_count*(((A+B)/2*2)+(5e-3+F)*2) ;
+
+R_meas_pri = 18e-3;
 R_pri = (cu_resistivity*lenght_pri)/(primary_parallel*pi*(primary_cable_diameter/2)^2*primary_parallel/litz_packing_factor);
+R_pri = R_meas_pri*lenght_pri/(lenght_pri+end_winding_pri);
+
+R_meas_sec = 102e-3;
 R_sec = (cu_resistivity*lenght_sec)/(secondary_parallel*pi*(secondary_cable_diameter/2)^2*secondary_parallel/litz_packing_factor);
+R_sec = (R_meas_sec*lenght_sec/secondary_parallel)/(lenght_sec/secondary_parallel+end_winding_sec)
 
 P_cu_pri = R_pri*5.3*5.3;
 P_cu_sec = R_sec*1.45*1.45;
