@@ -105,21 +105,21 @@ grid on
 %exportgraphics(fig, "deneme.pdf")
 
 % Choose a gap value (A4 width = 0.1mm), corresponds to 9 turns
-reluctance = 6750000 ;
-gap = 0.2723e-3;
-N_pri = 9;
+reluctance = 3000000 ;
+gap = 0.1203e-3;
+N_pri = 6;
 
 
 %% Determine Cable Length and Type
 
 % Set cable diameters:
 
-primary_parallel = 1; % how many parallel cables there are 
+primary_parallel = 2; % how many parallel cables there are 
 primary_cable_diameter = 1.4e-3;
 primary_cable_count = N_pri*primary_parallel;
 
 secondary_parallel = 1; % how many parallel cables there are 
-secondary_cable_diameter = 0.9e-3;
+secondary_cable_diameter = 1.4e-3;
 secondary_cable_count = N_pri*N*secondary_parallel;
 
 total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
@@ -137,6 +137,9 @@ strand_radius = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
 risk_factor = 0.5;
 strand_pri = max(I_in_avg)/(0.182*risk_factor); % 29 AWG current rating 0.182 A
 strand_sec = (Po/Vo)/(0.182*risk_factor) ; % 29 AWG current rating 0.182 A
+
+
+% for primary side
 
 %% Determine Cable Length and Type
 
@@ -156,16 +159,15 @@ window_area = ((B-C)/2)*2*E;
 fill_factor_awg = total_cable_area/window_area;
 
 %% Determine Max B
-I_pri_peak = I_Lm_avg+I_Lm_avg.*ripple_ratio./2;
-Phi = (N_pri.*(I_pri_peak))./reluctance;
-B_field = (Phi)./((A-B)*F);
-B_field_2 = (Phi)./(C*F);
+
+Phi = (N_pri.*(I_Lm_avg+I_Lm_avg.*ripple_ratio./2))./reluctance;
+B_field = (Phi)./((A-B)*F)
+B_field_2 = (Phi)./(C*F)
 
 
-plot(D_vec, B_field_2)
-title("Core flux density vs duty cycle")
+plot(B_field_2)
 hold on
-plot(D_vec,B_field)
-grid minor
+plot(B_field)
+
 
 
