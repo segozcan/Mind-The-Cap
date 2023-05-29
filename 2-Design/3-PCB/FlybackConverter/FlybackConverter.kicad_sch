@@ -2192,7 +2192,7 @@
     (property "Value" "Conn_01x02_Female" (id 1) (at 273.05 50.7999 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal" (id 2) (at 271.78 48.26 0)
+    (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal" (id 2) (at 271.78 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 271.78 48.26 0)
@@ -2238,7 +2238,7 @@
     (uuid 5218f09f-4a8c-4246-bbc5-dc5a647f8801)
     (property "Reference" "INPUT1" (id 0) (at 98.425 36.83 0))
     (property "Value" "Conn_01x02_Female" (id 1) (at 98.425 39.37 0))
-    (property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal" (id 2) (at 97.79 44.45 0)
+    (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal" (id 2) (at 97.79 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 97.79 44.45 0)
@@ -2474,6 +2474,22 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 65c57aea-b655-455c-910e-83b3a87a293a))
+  )
+
+  (symbol (lib_id "power:GND1") (at 246.38 54.61 0) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid 8516dc0e-3586-40cd-9dde-6aec3044d1d3)
+    (property "Reference" "#PWR?" (id 0) (at 246.38 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND1" (id 1) (at 246.38 59.69 0))
+    (property "Footprint" "" (id 2) (at 246.38 54.61 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 246.38 54.61 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 8e4b72ac-1913-42c2-8a57-d34e1f34a233))
   )
 
   (symbol (lib_id "Device:C") (at 143.51 43.18 0) (unit 1)
@@ -3021,6 +3037,9 @@
     (path "/7e2c3070-db95-4d3e-8d48-7c605e052121"
       (reference "#PWR0114") (unit 1) (value "GND") (footprint "")
     )
+    (path "/8516dc0e-3586-40cd-9dde-6aec3044d1d3"
+      (reference "#PWR?") (unit 1) (value "GND1") (footprint "")
+    )
     (path "/35139c98-63bc-4e10-977d-ce5beb339b90"
       (reference "CA1") (unit 1) (value "C") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
     )
@@ -3085,7 +3104,7 @@
       (reference "FLYBACK_DIODE_SUBSTITUTE1") (unit 1) (value "Z3SMCxxx") (footprint "Diode_SMD:D_SMC")
     )
     (path "/5218f09f-4a8c-4246-bbc5-dc5a647f8801"
-      (reference "INPUT1") (unit 1) (value "Conn_01x02_Female") (footprint "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal")
+      (reference "INPUT1") (unit 1) (value "Conn_01x02_Female") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal")
     )
     (path "/4172f9f5-af9c-467d-8404-d5682f0fee29"
       (reference "MOSFET1") (unit 1) (value "CSD19534Q5A") (footprint "Package_TO_SOT_SMD:TDSON-8-1")
@@ -3094,7 +3113,7 @@
       (reference "OPTO1") (unit 1) (value "TCMT1107") (footprint "Package_SO:SOP-4_4.4x2.6mm_P1.27mm")
     )
     (path "/487a895f-4c3d-4c29-a9ff-8cf89ba54c09"
-      (reference "OUTPUT1") (unit 1) (value "Conn_01x02_Female") (footprint "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal")
+      (reference "OUTPUT1") (unit 1) (value "Conn_01x02_Female") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal")
     )
     (path "/9117228d-0af7-4715-ab37-bc92df2921d5"
       (reference "PWMController1") (unit 1) (value "UC3843_SOIC8") (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
