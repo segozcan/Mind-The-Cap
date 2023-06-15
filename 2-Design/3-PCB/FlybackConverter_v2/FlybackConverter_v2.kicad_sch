@@ -2026,7 +2026,7 @@
     (property "Value" "DZ2S100X0L" (id 1) (at 209.55 121.9199 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Diode_SMD:D_SOD-523" (id 2) (at 202.565 120.65 0)
+    (property "Footprint" "Diode_SMD:D_SOD-123" (id 2) (at 202.565 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://industrial.panasonic.com/content/data/SC/ds/ds4/DZ2S10000L_E.pdf" (id 3) (at 207.01 120.65 0)
@@ -3211,7 +3211,7 @@
       (reference "CZ1") (unit 1) (value "C") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
     )
     (path "/14c7ef54-cc8d-4e3a-aea4-32382626f4f7"
-      (reference "DC1") (unit 1) (value "DZ2S100X0L") (footprint "Diode_SMD:D_SOD-523")
+      (reference "DC1") (unit 1) (value "DZ2S100X0L") (footprint "Diode_SMD:D_SOD-123")
     )
     (path "/e6040600-fa22-41e1-a300-9b6e6350445e"
       (reference "DSnubber1") (unit 1) (value "MBRA340") (footprint "Diode_SMD:D_SMA")
