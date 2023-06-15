@@ -25,4 +25,9 @@
   (fp_line (start 1.5 1.5) (end -1.5 1.5) (layer "F.CrtYd") (width 0.05) (tstamp 8cdc2cd8-4a0b-46c5-ae9e-84fe486350bd))
   (fp_line (start -1.5 -1.5) (end 1.5 -1.5) (layer "F.CrtYd") (width 0.05) (tstamp fc3058ce-37fe-4c0d-8513-94658440540e))
   (pad "1" thru_hole rect (at 0 0) (size 2 2) (drill 0.5) (layers *.Cu *.Mask) (tstamp 4c0db315-c5e6-4b9a-8e7e-fcc8fc5d5da2))
+  (model "${KICAD6_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x01_P2.54mm_Vertical.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )
