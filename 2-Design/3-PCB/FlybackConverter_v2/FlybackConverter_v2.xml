@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\isikemir\Desktop\Courses\EE464\Hardware_Project\Mind-The-Cap\2-Design\3-PCB\FlybackConverter_v2\FlybackConverter_v2.kicad_sch</source>
+    <date>6/16/2023 11:16:11 PM</date>
+    <tool>Eeschema (6.0.9)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>FlybackConverter_v2.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="CA1">
+      <value>1n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>35139c98-63bc-4e10-977d-ce5beb339b90</tstamps>
+    </comp>
+    <comp ref="CF1">
+      <value>20p</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>da100607-de9d-46da-82db-5654a279cf3a</tstamps>
+    </comp>
+    <comp ref="CIN1">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:CP_Elec_6.3x7.7</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>89fb83e8-7ef8-4b01-a678-60ce797e61a3</tstamps>
+    </comp>
+    <comp ref="CIN2">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0c0ec5c2-a44c-42ca-9654-48efb494f247</tstamps>
+    </comp>
+    <comp ref="CIN3">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>886d4625-5066-4f0b-a024-55442ed0ce3c</tstamps>
+    </comp>
+    <comp ref="CIN4">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1809bc80-7194-484b-b1c8-88211cd649a8</tstamps>
+    </comp>
+    <comp ref="COUT1">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:CP_Elec_10x12.6</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>56efb93a-fc51-4e0f-a22c-c852faba8e99</tstamps>
+    </comp>
+    <comp ref="COUT2">
+      <value>2.2uF</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7a9d7d96-fd0a-4884-b61a-e47d6b9e6c56</tstamps>
+    </comp>
+    <comp ref="COUT3">
+      <value>2.2uF</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>109f3c04-2b8e-4fcf-afa5-f222edb3bcb6</tstamps>
+    </comp>
+    <comp ref="COUT4">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0cf29486-8fa5-4a10-bf76-e7b4bee90f2f</tstamps>
+    </comp>
+    <comp ref="CP1">
+      <value>NAN</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ddadd4ff-ba23-4d15-a321-847b0478405c</tstamps>
+    </comp>
+    <comp ref="CS1">
+      <value>10n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>79ab1bf0-6193-4eff-80c2-d33be04e8d3e</tstamps>
+    </comp>
+    <comp ref="CSnubber1">
+      <value>4.7u-2220-50V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aee4f506-f067-4ebe-91ef-ca9529c98e0e</tstamps>
+    </comp>
+    <comp ref="CT1">
+      <value>0.72n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>54de77c6-37ae-452a-88ca-f7c5ad6560f1</tstamps>
+    </comp>
+    <comp ref="CVCC1">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9cff61c6-5434-42b5-b67c-29e11f3f492a</tstamps>
+    </comp>
+    <comp ref="CVREF1">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>daee23d2-492a-4f37-85ea-b1f337f1a4de</tstamps>
+    </comp>
+    <comp ref="CZ1">
+      <value>20n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3552d5d9-3393-4e44-b549-ad7dcaf47867</tstamps>
+    </comp>
+    <comp ref="DC1">
+      <value>DZ2S100X0L</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://industrial.panasonic.com/content/data/SC/ds/ds4/DZ2S10000L_E.pdf</datasheet>
+      <libsource lib="Diode" part="DZ2S100X0L" description="150mW Silicon Planar Zener Diode, 10V, SOD-523"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>14c7ef54-cc8d-4e3a-aea4-32382626f4f7</tstamps>
+    </comp>
+    <comp ref="DSnubber1">
+      <value>M3/5BT</value>
+      <footprint>Diode_SMD:D_SMB_Handsoldering</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/MBRA340T3-D.PDF</datasheet>
+      <libsource lib="Diode" part="MBRA340" description="40V 3A Schottky Barrier Rectifier Diode, SMA(DO-214AC)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e6040600-fa22-41e1-a300-9b6e6350445e</tstamps>
+    </comp>
+    <comp ref="FAN1">
+      <value>Conn_01x02_Female</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x02_Female" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>93f55004-d58c-4b01-99bf-22baea11e609</tstamps>
+    </comp>
+    <comp ref="FLYBACK_DIODE_SUBSTITUTE1">
+      <value>Z3SMCxxx</value>
+      <footprint>Diode_SMD:D_SMC_Handsoldering</footprint>
+      <datasheet>https://diotec.com/tl_files/diotec/files/pdf/datasheets/z3smc1.pdf</datasheet>
+      <libsource lib="Diode" part="Z3SMCxxx" description="3000mW Zener Diode, SMC(DO-214AB)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3e37ba8e-db34-4353-b445-c369a6553ddc</tstamps>
+    </comp>
+    <comp ref="INPUT1">
+      <value>Conn_01x02_Female</value>
+      <footprint>kutup:sevgi_konnektosu</footprint>
+      <libsource lib="Connector" part="Conn_01x02_Female" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5218f09f-4a8c-4246-bbc5-dc5a647f8801</tstamps>
+    </comp>
+    <comp ref="MOSFET1">
+      <value>CSD19534Q5A</value>
+      <footprint>kutup:CSD19534Q5A</footprint>
+      <datasheet>http://www.ti.com/lit/gpn/csd19534q5a</datasheet>
+      <libsource lib="Transistor_FET" part="CSD19534Q5A" description="50A Id, 100V Vds, NexFET N-Channel Power MOSFET, 15.1mOhm Ron, 17nC Qg(typ), SON8 5x6mm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4172f9f5-af9c-467d-8404-d5682f0fee29</tstamps>
+    </comp>
+    <comp ref="OPTO1">
+      <value>TCMT1107</value>
+      <footprint>Package_SO:SOP-4_4.4x2.6mm_P1.27mm</footprint>
+      <datasheet>http://www.vishay.com/docs/83510/tcmt1100.pdf</datasheet>
+      <libsource lib="Isolator" part="TCMT1107" description="Optocoupler, Vce 70V, CTR 80-160%, Viso 3750V (RMS), SOP-4"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e4e0de23-7a7f-4ced-af46-abcba17ec11f</tstamps>
+    </comp>
+    <comp ref="OUTPUT1">
+      <value>Conn_01x02_Female</value>
+      <footprint>kutup:sevgi_konnektosu</footprint>
+      <libsource lib="Connector" part="Conn_01x02_Female" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>487a895f-4c3d-4c29-a9ff-8cf89ba54c09</tstamps>
+    </comp>
+    <comp ref="PWMController1">
+      <value>UC3843_SOIC8</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/uc3842.pdf</datasheet>
+      <libsource lib="Regulator_Controller" part="UC3843_SOIC8" description="Current-Mode PWM Controllers, 100% Duty Cycle, 8.4V/7.6V UVLO, SOIC-8"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9117228d-0af7-4715-ab37-bc92df2921d5</tstamps>
+    </comp>
+    <comp ref="RA1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4e59970f-50be-497b-8434-3e957121d64b</tstamps>
+    </comp>
+    <comp ref="RAC1">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1e90f72e-5b68-4cea-9281-87c137492085</tstamps>
+    </comp>
+    <comp ref="RB1">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>16440240-ee3c-4519-80ab-71082a7be989</tstamps>
+    </comp>
+    <comp ref="RC1">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4170481d-9874-433d-9544-84bccdd619a6</tstamps>
+    </comp>
+    <comp ref="RCS1">
+      <value>10m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>eda2c49b-e8f6-4fe3-a39b-89b83269e1b8</tstamps>
+    </comp>
+    <comp ref="RE1">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d5eca49d-042c-4463-8ab4-7c004c4938ff</tstamps>
+    </comp>
+    <comp ref="RF1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c9ca2a27-da63-447f-8ee1-46b0a936fb7d</tstamps>
+    </comp>
+    <comp ref="RG1">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5adb1aba-5b98-4876-9aef-b3fdcf5b239d</tstamps>
+    </comp>
+    <comp ref="RG2">
+      <value>22k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a41bc548-6b89-4ad8-bfbf-e11f6314f034</tstamps>
+    </comp>
+    <comp ref="RI1">
+      <value>85k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>437ea7de-cd77-46c4-b2c8-e28e90a5651d</tstamps>
+    </comp>
+    <comp ref="RJ1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ebc5c6b9-b7be-44c3-86d9-12d41199c4e3</tstamps>
+    </comp>
+    <comp ref="RK1">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9e8dc90f-446e-4672-b944-c9753a7af9cf</tstamps>
+    </comp>
+    <comp ref="RLmin1">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dc9ad6e0-1372-446f-9d51-b12353e42122</tstamps>
+    </comp>
+    <comp ref="RLmin2">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>af7abfa5-e739-4d37-ab6c-cdc0e9c0b247</tstamps>
+    </comp>
+    <comp ref="RP1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>da3adef1-e824-4609-91de-d7b563b2d6f3</tstamps>
+    </comp>
+    <comp ref="RS1">
+      <value>330k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>44951aac-0cc0-4db7-ae89-1b2e9117c73b</tstamps>
+    </comp>
+    <comp ref="RS2">
+      <value>2.2k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>62f8cc6a-570e-4d42-a3fe-8794c8afd749</tstamps>
+    </comp>
+    <comp ref="RSnubber1">
+      <value>82//82</value>
+      <footprint>Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ca23ebe5-09af-4b93-8bd5-5f14974a31b1</tstamps>
+    </comp>
+    <comp ref="RT1">
+      <value>12k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5fb96c6a-ab0f-446b-92fa-b00a4a51357b</tstamps>
+    </comp>
+    <comp ref="RZ1">
+      <value>22k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7a28c402-6780-4153-85d1-a328eb7aa143</tstamps>
+    </comp>
+    <comp ref="TestPointB1">
+      <value>Conn_01x01_Female</value>
+      <footprint>kutup:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm</footprint>
+      <libsource lib="Connector" part="Conn_01x01_Female" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>58d38293-50a5-4f00-8606-9dc49781499c</tstamps>
+    </comp>
+    <comp ref="TestPointB2">
+      <value>Conn_01x01_Female</value>
+      <footprint>kutup:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm</footprint>
+      <libsource lib="Connector" part="Conn_01x01_Female" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5b40ec80-db7c-4f33-9341-b68c456eb29c</tstamps>
+    </comp>
+    <comp ref="TestPointB3">
+      <value>Conn_01x01_Female</value>
+      <footprint>kutup:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm</footprint>
+      <libsource lib="Connector" part="Conn_01x01_Female" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c7e0b1e5-be6e-4b3f-900e-30885e9c4278</tstamps>
+    </comp>
+    <comp ref="TestPointB4">
+      <value>Conn_01x01_Female</value>
+      <footprint>kutup:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm</footprint>
+      <libsource lib="Connector" part="Conn_01x01_Female" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9326541c-01c8-4e7d-becd-4e0e82d00fa0</tstamps>
+    </comp>
+    <comp ref="TestPointB5">
+      <value>Conn_01x01_Female</value>
+      <footprint>kutup:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm</footprint>
+      <libsource lib="Connector" part="Conn_01x01_Female" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2f620fdc-53d0-41f9-ab37-1f95e824b18e</tstamps>
+    </comp>
+    <comp ref="TR1">
+      <value>ADT1-1</value>
+      <footprint>kutup:sevgi-kafkasi</footprint>
+      <datasheet>https://www.minicircuits.com/pdfs/ADT1-1+.pdf</datasheet>
+      <libsource lib="Transformer" part="ADT1-1" description="0.15-400MHz 1:1 RF Transformer, Balanced to Balanced, CD542"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cc91d66b-2d89-4ca6-966e-6522a89c9966</tstamps>
+    </comp>
+    <comp ref="TVS1">
+      <value>MBRA340</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/MBRA340T3-D.PDF</datasheet>
+      <libsource lib="Diode" part="MBRA340" description="40V 3A Schottky Barrier Rectifier Diode, SMA(DO-214AC)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>98de663a-378d-44cc-ab01-eb0398b39052</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>TL431DBZ</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/tl431.pdf</datasheet>
+      <libsource lib="Reference_Voltage" part="TL431DBZ" description="Shunt Regulator, SOT-23"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b1de1fd9-9b87-4e87-bced-9042ad1876a6</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>LM7812_TO220</value>
+      <footprint>Package_TO_SOT_SMD:TO-252-2</footprint>
+      <datasheet>https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF</datasheet>
+      <libsource lib="Regulator_Linear" part="LM7812_TO220" description="Positive 1A 35V Linear Regulator, Fixed Output 12V, TO-220"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="FlybackConverter_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>55d61ff5-cee8-4a7b-bbf6-835e09db08f3</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Conn_01x01_Female">
+      <description>Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x01_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x02_Female">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="DZ2S100X0L">
+      <description>150mW Silicon Planar Zener Diode, 10V, SOD-523</description>
+      <docs>https://industrial.panasonic.com/content/data/SC/ds/ds4/DZ2S10000L_E.pdf</docs>
+      <footprints>
+        <fp>D?SOD?523*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">DZ2S100X0L</field>
+        <field name="Footprint">Diode_SMD:D_SOD-523</field>
+        <field name="Datasheet">https://industrial.panasonic.com/content/data/SC/ds/ds4/DZ2S10000L_E.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="MBRA340">
+      <description>40V 3A Schottky Barrier Rectifier Diode, SMA(DO-214AC)</description>
+      <docs>https://www.onsemi.com/pub/Collateral/MBRA340T3-D.PDF</docs>
+      <footprints>
+        <fp>D*SMA*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">MBRA340</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/MBRA340T3-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="Z3SMCxxx">
+      <description>3000mW Zener Diode, SMC(DO-214AB)</description>
+      <docs>https://diotec.com/tl_files/diotec/files/pdf/datasheets/z3smc1.pdf</docs>
+      <footprints>
+        <fp>D?SMC*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">Z3SMCxxx</field>
+        <field name="Footprint">Diode_SMD:D_SMC</field>
+        <field name="Datasheet">https://diotec.com/tl_files/diotec/files/pdf/datasheets/z3smc1.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Isolator" part="TCMT1107">
+      <description>Optocoupler, Vce 70V, CTR 80-160%, Viso 3750V (RMS), SOP-4</description>
+      <docs>http://www.vishay.com/docs/83510/tcmt1100.pdf</docs>
+      <footprints>
+        <fp>SOP*4.4x2.6mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TCMT1107</field>
+        <field name="Footprint">Package_SO:SOP-4_4.4x2.6mm_P1.27mm</field>
+        <field name="Datasheet">http://www.vishay.com/docs/83510/tcmt1100.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Reference_Voltage" part="TL431DBZ">
+      <description>Shunt Regulator, SOT-23</description>
+      <docs>http://www.ti.com/lit/ds/symlink/tl431.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TL431DBZ</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/tl431.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="REF" type="passive"/>
+        <pin num="3" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Controller" part="UC3843_SOIC8">
+      <description>Current-Mode PWM Controllers, 100% Duty Cycle, 8.4V/7.6V UVLO, SOIC-8</description>
+      <docs>http://www.ti.com/lit/ds/symlink/uc3842.pdf</docs>
+      <footprints>
+        <fp>SOIC*3.9x4.9mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">UC3843_SOIC8</field>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/uc3842.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="COMP" type="passive"/>
+        <pin num="2" name="FB" type="input"/>
+        <pin num="3" name="CS" type="input"/>
+        <pin num="4" name="RC" type="passive"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="OUT" type="output"/>
+        <pin num="7" name="VCC" type="power_in"/>
+        <pin num="8" name="VREF" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="LM7812_TO220">
+      <description>Positive 1A 35V Linear Regulator, Fixed Output 12V, TO-220</description>
+      <docs>https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF</docs>
+      <footprints>
+        <fp>TO?220*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM7812_TO220</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-220-3_Vertical</field>
+        <field name="Datasheet">https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VI" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VO" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transformer" part="ADT1-1">
+      <description>0.15-400MHz 1:1 RF Transformer, Balanced to Balanced, CD542</description>
+      <docs>https://www.minicircuits.com/pdfs/ADT1-1+.pdf</docs>
+      <footprints>
+        <fp>Mini?Circuits*CD542*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TR1</field>
+        <field name="Value">ADT1-1</field>
+        <field name="Footprint">kutup:sevgi-kafkasi</field>
+        <field name="Datasheet">https://www.minicircuits.com/pdfs/ADT1-1+.pdf</field>
+      </fields>
+      <pins>
+        <pin num="4" name="w~" type="passive"/>
+        <pin num="6" name="" type="passive"/>
+        <pin num="7" name="" type="passive"/>
+        <pin num="9" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="CSD19534Q5A">
+      <description>50A Id, 100V Vds, NexFET N-Channel Power MOSFET, 15.1mOhm Ron, 17nC Qg(typ), SON8 5x6mm</description>
+      <docs>http://www.ti.com/lit/gpn/csd19534q5a</docs>
+      <footprints>
+        <fp>TDSON*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">MOSFET1</field>
+        <field name="Value">CSD19534Q5A</field>
+        <field name="Footprint">kutup:CSD19534Q5A</field>
+        <field name="Datasheet">http://www.ti.com/lit/gpn/csd19534q5a</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="4" name="G" type="passive"/>
+        <pin num="5" name="D" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Diode">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Diode.kicad_sym</uri>
+    </library>
+    <library logical="Isolator">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Isolator.kicad_sym</uri>
+    </library>
+    <library logical="Reference_Voltage">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Reference_Voltage.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Controller">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Regulator_Controller.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Regulator_Linear.kicad_sym</uri>
+    </library>
+    <library logical="Transformer">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transformer.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="CF1" pin="2" pintype="passive"/>
+      <node ref="CIN1" pin="2" pintype="passive"/>
+      <node ref="CIN2" pin="2" pintype="passive"/>
+      <node ref="CIN3" pin="2" pintype="passive"/>
+      <node ref="CIN4" pin="2" pintype="passive"/>
+      <node ref="CT1" pin="2" pintype="passive"/>
+      <node ref="CVCC1" pin="1" pintype="passive"/>
+      <node ref="CVREF1" pin="2" pintype="passive"/>
+      <node ref="FAN1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="INPUT1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="PWMController1" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="RC1" pin="2" pintype="passive"/>
+      <node ref="RCS1" pin="2" pintype="passive"/>
+      <node ref="RG2" pin="1" pintype="passive"/>
+      <node ref="TVS1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="2" name="GNDREF">
+      <node ref="COUT1" pin="2" pintype="passive"/>
+      <node ref="COUT2" pin="2" pintype="passive"/>
+      <node ref="COUT3" pin="2" pintype="passive"/>
+      <node ref="COUT4" pin="2" pintype="passive"/>
+      <node ref="DC1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="OUTPUT1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="RK1" pin="2" pintype="passive"/>
+      <node ref="RLmin1" pin="2" pintype="passive"/>
+      <node ref="RLmin2" pin="2" pintype="passive"/>
+      <node ref="TR1" pin="6" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="3" name="Net-(CA1-Pad1)">
+      <node ref="CA1" pin="1" pintype="passive"/>
+      <node ref="PWMController1" pin="2" pinfunction="FB" pintype="input"/>
+      <node ref="RA1" pin="1" pintype="passive"/>
+      <node ref="RB1" pin="1" pintype="passive"/>
+    </net>
+    <net code="4" name="Net-(CA1-Pad2)">
+      <node ref="CA1" pin="2" pintype="passive"/>
+      <node ref="PWMController1" pin="1" pinfunction="COMP" pintype="passive"/>
+      <node ref="RA1" pin="2" pintype="passive"/>
+      <node ref="TestPointB2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="5" name="Net-(CF1-Pad1)">
+      <node ref="CF1" pin="1" pintype="passive"/>
+      <node ref="PWMController1" pin="3" pinfunction="CS" pintype="input"/>
+      <node ref="RP1" pin="2" pintype="passive"/>
+      <node ref="RS1" pin="2" pintype="passive"/>
+      <node ref="RS2" pin="1" pintype="passive"/>
+    </net>
+    <net code="6" name="Net-(CIN1-Pad1)">
+      <node ref="CIN1" pin="1" pintype="passive"/>
+      <node ref="CIN2" pin="1" pintype="passive"/>
+      <node ref="CIN3" pin="1" pintype="passive"/>
+      <node ref="CIN4" pin="1" pintype="passive"/>
+      <node ref="CSnubber1" pin="1" pintype="passive"/>
+      <node ref="FAN1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="INPUT1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="RSnubber1" pin="1" pintype="passive"/>
+      <node ref="TR1" pin="9" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="VI" pintype="power_in"/>
+    </net>
+    <net code="7" name="Net-(COUT1-Pad1)">
+      <node ref="COUT1" pin="1" pintype="passive"/>
+      <node ref="COUT2" pin="1" pintype="passive"/>
+      <node ref="COUT3" pin="1" pintype="passive"/>
+      <node ref="COUT4" pin="1" pintype="passive"/>
+      <node ref="FLYBACK_DIODE_SUBSTITUTE1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="OUTPUT1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="RAC1" pin="1" pintype="passive"/>
+      <node ref="RE1" pin="1" pintype="passive"/>
+      <node ref="RLmin1" pin="1" pintype="passive"/>
+      <node ref="RLmin2" pin="1" pintype="passive"/>
+      <node ref="TestPointB4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="8" name="Net-(CP1-Pad1)">
+      <node ref="CP1" pin="1" pintype="passive"/>
+      <node ref="OPTO1" pin="2" pintype="passive"/>
+      <node ref="RJ1" pin="1" pintype="passive"/>
+      <node ref="RZ1" pin="1" pintype="passive"/>
+      <node ref="TestPointB3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="9" name="Net-(CP1-Pad2)">
+      <node ref="CP1" pin="2" pintype="passive"/>
+      <node ref="CZ1" pin="2" pintype="passive"/>
+      <node ref="RI1" pin="2" pintype="passive"/>
+      <node ref="RK1" pin="1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="REF" pintype="passive"/>
+    </net>
+    <net code="10" name="Net-(CS1-Pad1)">
+      <node ref="CS1" pin="1" pintype="passive"/>
+      <node ref="CT1" pin="1" pintype="passive"/>
+      <node ref="PWMController1" pin="4" pinfunction="RC" pintype="passive"/>
+      <node ref="RT1" pin="2" pintype="passive"/>
+    </net>
+    <net code="11" name="Net-(CS1-Pad2)">
+      <node ref="CS1" pin="2" pintype="passive"/>
+      <node ref="RS1" pin="1" pintype="passive"/>
+    </net>
+    <net code="12" name="Net-(CSnubber1-Pad2)">
+      <node ref="CSnubber1" pin="2" pintype="passive"/>
+      <node ref="DSnubber1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="RSnubber1" pin="2" pintype="passive"/>
+    </net>
+    <net code="13" name="Net-(CVCC1-Pad2)">
+      <node ref="CVCC1" pin="2" pintype="passive"/>
+      <node ref="PWMController1" pin="7" pinfunction="VCC" pintype="power_in"/>
+      <node ref="TVS1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="VO" pintype="power_out"/>
+    </net>
+    <net code="14" name="Net-(CVREF1-Pad1)">
+      <node ref="CVREF1" pin="1" pintype="passive"/>
+      <node ref="OPTO1" pin="4" pintype="passive"/>
+      <node ref="PWMController1" pin="8" pinfunction="VREF" pintype="power_out"/>
+      <node ref="RP1" pin="1" pintype="passive"/>
+      <node ref="RT1" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="Net-(CZ1-Pad1)">
+      <node ref="CZ1" pin="1" pintype="passive"/>
+      <node ref="RZ1" pin="2" pintype="passive"/>
+    </net>
+    <net code="16" name="Net-(DC1-Pad1)">
+      <node ref="DC1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="RE1" pin="2" pintype="passive"/>
+      <node ref="RF1" pin="2" pintype="passive"/>
+      <node ref="RJ1" pin="2" pintype="passive"/>
+    </net>
+    <net code="17" name="Net-(DSnubber1-Pad2)">
+      <node ref="DSnubber1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="MOSFET1" pin="5" pinfunction="D" pintype="passive"/>
+      <node ref="TR1" pin="7" pintype="passive"/>
+    </net>
+    <net code="18" name="Net-(FLYBACK_DIODE_SUBSTITUTE1-Pad2)">
+      <node ref="FLYBACK_DIODE_SUBSTITUTE1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="TR1" pin="4" pinfunction="w~" pintype="passive"/>
+    </net>
+    <net code="19" name="Net-(MOSFET1-Pad1)">
+      <node ref="MOSFET1" pin="1" pinfunction="S" pintype="passive"/>
+      <node ref="RCS1" pin="1" pintype="passive"/>
+      <node ref="RS2" pin="2" pintype="passive"/>
+    </net>
+    <net code="20" name="Net-(MOSFET1-Pad4)">
+      <node ref="MOSFET1" pin="4" pinfunction="G" pintype="passive"/>
+      <node ref="RG1" pin="2" pintype="passive"/>
+      <node ref="RG2" pin="2" pintype="passive"/>
+    </net>
+    <net code="21" name="Net-(OPTO1-Pad1)">
+      <node ref="OPTO1" pin="1" pintype="passive"/>
+      <node ref="RF1" pin="1" pintype="passive"/>
+    </net>
+    <net code="22" name="Net-(OPTO1-Pad3)">
+      <node ref="OPTO1" pin="3" pintype="passive"/>
+      <node ref="RB1" pin="2" pintype="passive"/>
+      <node ref="RC1" pin="1" pintype="passive"/>
+      <node ref="TestPointB1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(PWMController1-Pad6)">
+      <node ref="PWMController1" pin="6" pinfunction="OUT" pintype="output"/>
+      <node ref="RG1" pin="1" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(RAC1-Pad2)">
+      <node ref="RAC1" pin="2" pintype="passive"/>
+      <node ref="RI1" pin="1" pintype="passive"/>
+      <node ref="TestPointB5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+  </nets>
+</export>
