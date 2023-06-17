@@ -2836,9 +2836,7 @@
     (property "Value" "82//82" (id 1) (at 172.72 36.83 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder" (id 2) (at 172.212 44.45 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
+    (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (id 2) (at 172.212 44.45 90))
     (property "Datasheet" "~" (id 3) (at 173.99 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2936,7 +2934,7 @@
     (property "Value" "82//82" (id 1) (at 175.26 36.83 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder" (id 2) (at 174.752 44.45 90)
+    (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (id 2) (at 174.752 44.45 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 176.53 44.45 0)
@@ -3127,7 +3125,7 @@
     (uuid e6040600-fa22-41e1-a300-9b6e6350445e)
     (property "Reference" "DSnubber1" (id 0) (at 174.9425 48.26 0))
     (property "Value" "M3/5BT" (id 1) (at 174.9425 50.8 0))
-    (property "Footprint" "Diode_SMD:D_SMB_Handsoldering" (id 2) (at 175.26 59.055 0)
+    (property "Footprint" "Diode_SMD:D_SMB" (id 2) (at 175.26 59.055 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.onsemi.com/pub/Collateral/MBRA340T3-D.PDF" (id 3) (at 175.26 54.61 0)
@@ -3311,7 +3309,7 @@
       (reference "CZ1") (unit 1) (value "22n") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
     )
     (path "/e6040600-fa22-41e1-a300-9b6e6350445e"
-      (reference "DSnubber1") (unit 1) (value "M3/5BT") (footprint "Diode_SMD:D_SMB_Handsoldering")
+      (reference "DSnubber1") (unit 1) (value "M3/5BT") (footprint "Diode_SMD:D_SMB")
     )
     (path "/14c7ef54-cc8d-4e3a-aea4-32382626f4f7"
       (reference "D_Z_10V1") (unit 1) (value "DZ2S100X0L") (footprint "Diode_SMD:D_SOD-123")
@@ -3395,10 +3393,10 @@
       (reference "RS2") (unit 1) (value "2.2k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
     )
     (path "/ca23ebe5-09af-4b93-8bd5-5f14974a31b1"
-      (reference "RSnubber1") (unit 1) (value "82//82") (footprint "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder")
+      (reference "RSnubber1") (unit 1) (value "82//82") (footprint "Resistor_SMD:R_2512_6332Metric")
     )
     (path "/b1698430-659f-4b80-a575-c7b731e4c2e7"
-      (reference "RSnubber2") (unit 1) (value "82//82") (footprint "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder")
+      (reference "RSnubber2") (unit 1) (value "82//82") (footprint "Resistor_SMD:R_2512_6332Metric")
     )
     (path "/5fb96c6a-ab0f-446b-92fa-b00a4a51357b"
       (reference "RT1") (unit 1) (value "12k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
