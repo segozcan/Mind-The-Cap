@@ -1,0 +1,523 @@
+\documentclass[12pt]{article}
+\usepackage[paper=letterpaper,margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{newtxtext, newtxmath}
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{physics}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage[inkscapeformat=eps]{svg}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[nottoc,numbib]{tocbibind}
+% Add References to the Table of Contents
+
+\setlength{\droptitle}{-6em}
+
+% Enter the specific assignment number and topic of that assignment below, and replace "Your Name" with your actual name.
+\title{\textbf{EE463, Fall 2022} \\ Homework 1 }
+
+\author{&Selin Ezgi Özcan 2375475 \\ Işık Emir Altunkol 2442408}
+
+\date{\today}
+
+\captionsetup{justification=centering}
+\begin{document}
+\begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+        
+       \Huge
+       \textbf{EE464 2023 Spring} \\
+       \Large
+       \vspace{0.5cm}
+        Hardware Project Simulation Report\\
+       \Large
+       \vspace{0.5cm}  
+        \large
+       Selin Ezgi Özcan, 2375475 \\
+       \vspace{0.2cm}
+       Işık Emir Altunkol, 2442408 \\
+       \vspace{0.2cm}
+       Özgür Gülsuna, 2307668     \\
+       \vspace{1.1cm}
+        \textbf{Mind the Cap}
+       \normalsize
+       \vspace{2cm}
+        
+     
+       \includegraphics[width=0.4\textwidth]{img/mindthecap.jpg}
+            
+       Electrical - Electronics Engineering\\
+       Middle East Technical University\\
+       Turkey\\
+       \vspace{4cm}
+       May 5, 2023
+            
+   \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+
+
+\section{Introduction}
+
+This is the preliminary report for the hardware project of EE464 Static Power Conversion II course, prepared by the group Mind the Cap. 
+
+We have decided to implement a flyback converter topology to convert and input voltage range of 12-18V to 48V at 1A rated. In this report, the reader will find our decision process for topology selection, electrical and magnetic parameters selections, computer simulations both in ideal and nonideal cases, loss calculations and component selections for the product. A discussion of future work is provided at the end.
+
+\section{Topology}
+
+    \subsection{Topology Selection}
+    We have decided to build a flyback converter. Basic topology of a flyback converter is given in Figure \ref{fig:flyback}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = \textwidth]{img/flyback.png}
+        \caption{Flyback converter}
+        \label{fig:flyback}
+    \end{figure}
+
+    Our alternative in choices were active clamp flyback converter and forward converter. The dominant advantages of active clamp topology are increased efficiency by applying ZVS and reduced switch voltage stress, which can also be achieved with snubbers in ordinary flyback converters. Although seemingly advantageous, we had to abandon the idea of active clamp flyback converter because all IC's we could find had startup voltages higher than the input voltage range of the project. This meant we had to use a digital controller, but it had to be quite precise to switch at the correct instant so that efficiency would be high and circuit would be linear. Our second alternative, forward converter, was disregarded because forward converter requires two inductors and two diodes. We preferred less components to deal with.
+    \subsection{Parameter Selection}
+
+    There are two main parameters in a flyback converter: the magnetizing inductance of the transformer and the turns ratio.
+
+    \begin{itemize}
+
+        \item DCM vs CCM selection:
+
+        According to \cite{dcm}, peak MOSFET and diode currents are higher in DCM. Further, DCM losses are claimed to be higher than CCM losses. Combined with the fact that DCM means nonlinear operation, it may seem as if it is all negative. However, the same source provides the typical Bode plots of CCM and DCM, where we see that the control of DCM operation may be less tricky than CCM. Nonetheless, we selected an IC that can perform control. Thus, we chose CCM so that we could design our parameters in simpler linear relations.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.8]{img/bode.png}
+            \caption{Bode plots in DCM and CCM}
+            \label{fig:bode}
+        \end{figure}
+
+        \item Switch frequency $f_s$ selection:
+
+        We decided to operate at 200 KHz because it is possible by both by analog and digital controllers. All other selections were made upon this selection.
+        
+        \item Turns ratio $N = \frac{N_2}{N_1}$ selection:
+
+        Input voltage ranges between 12V and 18V while output voltage must remain constant. In the ideal lossless case the voltage relation of a flyback converter is given as:
+
+        \begin{align*}
+            V_o = \frac{N_2}{N_1}\frac{D}{1-D}
+        \end{align*}
+
+        Plot \ref{fig:DvsN} shows the variation of maximum and minimum required duty cycle with respect to different $N = \frac{N_2}{N_1}$.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics{img/DvsN.pdf}
+            \caption{D vs N plot of Flyback converter}
+            \label{fig:DvsN}
+        \end{figure}
+        
+        Using this plot, we decided on out duty cycle range. 0.4-0.5 is a good nominal operating interval because it allows us to compensate for unprecedented increase and decrease requirements. Therefore, we set the turns ratio as $N = 4$.
+
+        \item Magnetizing inductance $L_m$ selection:
+        
+        Next, we needed to determine the magnetizing inductance $L_m$. The key idea in choosing $L_m$ is to both ensure CCM is possible and to use as much of the flux bearing capabilities of the core as possible. We decided 40\% magnetizing current ripple is a reasonable value because it means we can continue to work in CCM even if load is much less than its rated value. 
+
+        Similarly to the previous part, we have used MATLAB to create the plot of required magnetizing inductance for each input current average case. Then we made sure that the inductance value satisfies the maximum 40\% $i_M$ ripple constraint in all cases. To do so, we have used the characteristic plots of the flyback converter to derive the following relationship:
+
+        \begin{align*}
+            I_{LM, avg} = \frac{I_{in,avg}}{D}
+        \end{align*}
+
+        Then, assuming a predicted and not so absurd 88\% efficiency value, we determined the input current average for a number of input voltages. Finally, the given relation determines the $L_m$ value with respect to any desired current ripple and input current:
+
+        \begin{align*}
+            L_m = \frac{V_{in}D}{f_s\Delta I_{LM}}
+        \end{align*}
+
+        Figure \ref{fig:VinvsLm} illustrates the relationship between the input voltage and the required $L_m$ to ensure maximum 40\% magnetizing current ripple.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics{img/VinvsLm.pdf}
+            \caption{Required $L_m$ at each input voltage}
+            \label{fig:VinvsLm}
+        \end{figure}
+
+        Referring to the Figure \ref{fig:VinvsLm} we decided to set $L_m = 12\mu$H. Note that this value overestimates $L_m$ than its ideal case. 
+        
+        Now we assure CCM operation and determine the output current limits for constant output voltage and varying input voltage. We continue with perfect efficiency in this calculation.
+
+        At the DCM and CCM boundary, 
+        \begin{align*}
+            \Delta i_{LM} = 2 i_{LMavg}\\
+            \frac{V_sDT_s}{L_m} = 2 i_{LMavg} =\frac{2i_{in,avg}}{D}\\
+        \end{align*}
+
+        \begin{table}[H]
+        \centering
+        \caption{DCM boundary output average currents at maximum and minimum input voltage}
+        \begin{tabular}{|c|c|l}
+        \cline{1-2}
+        \textbf{Input Voltage (V)} & \textbf{DCM Boundary Current (mA)} &  \\ \cline{1-2}
+        12                         & 156                                &  \\ \cline{1-2}
+        18                         & 225                                &  \\ \cline{1-2}
+        \end{tabular}
+        \label{tab:DCM}
+        \end{table}
+
+        Referrring to Table \ref{tab:DCM}, we see that the least output current must be larger than 225 mA, which roughly corresponds to 25 \% load. Even in this case, we continue to operate at CCM.
+    \end{itemize}
+
+    Table \ref{tab:elec_sum} is a table summarizing the electrical parameters of our flyback converter.
+
+    \begin{table}[H]
+    \centering
+    \caption{Electrical Parameters of the Converter}
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Parameter} & \textbf{Value} \\ \hline
+    DCM vs CCM         & CCM            \\ \hline
+    $f_s$              & 200 KHz        \\ \hline
+    N                  & 4              \\ \hline
+    $L_m$              & $12\mu$H       \\ \hline
+    \end{tabular}
+    \label{tab:elec_sum}
+    \end{table}
+    
+\section{Magnetic Design}
+
+    After finalizing $L_m$ parameter, we then worked on magnetic design. A quick market research showed that many cores were not readily available on the market. Thus, we went on with a upcycled ferrite core. The reused ferrite core in hand is an E core made up of 3C94 material \cite{core}.
+    
+    The concerns in magnetic design are whether or not the core gets saturated, if and how much air gap must be present and whether or not there is enough room to wind the wires around the legs of the core.
+    \subsection{Core Design}
+
+    Figure \ref{fig:photo of core} is a photograph of our E core. All decisions are made for this core. There are two main parameters in core design; namely, air gap length and turn number.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/core.png}
+        \caption{Our E core}
+        \label{fig:photo of core}
+    \end{figure}
+
+    Firstly, an air gap is necessary for flyback converters because flyback converter stores energy in the core during on time and releases the energy to the load during off time. Therefore, air gap is used to enhance the energy storing capability of the core.
+
+    \begin{itemize}
+        \item Gap length and primary side winding turn number:
+
+        Up to this point, we only had the decision of $L_m = 12\mu$ H at hand and the inductance relation:
+
+        \begin{align*}
+            L = \frac{N_p^2}{R}
+        \end{align*}
+
+        Reluctance is a function of air gap length so inductance is a function of both decision parameters. As an easy way of choosing both parameters at once, we decided to plot the variation of one parameter with respect to the other for the given inductance value. Since the permeability of air is much smaller than ferrite material, reluctance of the core with the gap almost equals the reluctance of the air gap. Therefore, we assumed core reluctance is zero without the air gap to have a sense of air gap and turn number. Figure \ref{fig:airgapvsturns} is the plot we obtained.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics{img/airgapvsturns.pdf}
+            \caption{Air gap length and primary side turns for $L_m = 12\mu$H}
+            \label{fig:airgapvsturns}
+        \end{figure}
+
+        After some iterations, we set primary side turn number to 9 so that air gap length is approximately 0.27mm. For reference, thickness of A4 paper is almost 0.1 mm. Note that almost 3 papers thick air gap verifies our approximation for the equivalent reluctance. Indeed, the reluctance of the air gap is  6750000 $\frac{Aturns}{Wb}$.
+        
+        \item Core magnetic flux density:
+
+        One of the most important criteria in core design is ensuring the core stays linear, at least however much real life permits. To check this, maximum possible magnetizing current peak should not disrupt core linearity. In other words, such a flux should not lead to saturation.
+
+        We have used the approximate reluctance value to sweep across primary peak currents to obtain the operating level flux densities. 
+
+        \begin{align*}
+            I_{pri,peak} = I_{LMavg} + I_{LMavg}\frac{ripple \: ratio}{2}
+        \end{align*}
+
+        The outer legs of the E core are slightly smaller in area than the middle leg. Therefore, magnetic flux densities are different at these two types of legs. We see both densities in figure \ref{fig:B}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics{img/B.pdf}
+            \caption{B field density vs duty cycle}
+            \label{fig:B}
+        \end{figure}
+
+        The material saturates at around 300 mT \cite{core} so we are within the limits and the converter remains linear.
+    \end{itemize}
+    
+        \begin{table}[H]
+        \centering
+        \caption{Core design parameters}
+        \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Parameter}         & \textbf{Value} \\ \hline
+        Primary side turn number   & 9              \\ \hline
+        Secondary side turn number & 36             \\ \hline
+        Air gap length             & 0.27mm         \\ \hline
+        B field                    & 140 mT - 280 mT \\ \hline
+        \end{tabular}
+        \label{tab:core}
+        \end{table}
+
+    
+    \subsection{Winding Design}
+    For the actual wires of the flyback transformer we considered two alternatives. The first analysis is done with standard single strand copper wires. First consideration on this is the skin depth since the switching frequency is selected as 200 kHz and related AC losses are affected by skin depth a lot. For the selected $F_{sw}$ the skin depth results in,
+
+    \begin{equation*}
+        \delta = \sqrt{\frac{\rho}{\pi F_{sw} \mu_0 }} = 1.4587\cdot 10^{-4}m
+    \end{equation*}
+
+    Later, maximum allowable strand cross-section is yields,
+    
+    \begin{equation*}
+        \textrm{Strand Area} = \pi \delta ^2  = 0.0668 mm^2 
+    \end{equation*}
+
+    This is around 29 AWG. Current rating of this wire gauge is 0.182 amperes however we can define a risk factor to push the copper a little more to utilize the core more effectively. In another words, with a risk factor of 2 double the amount of current will pass through the wire.
+
+    The RMS of the input current is calculated as 4.55 amperes.
+    Number of primary strands is, this RMS current divided into each strand. The result is we would need 33.3 parallel strands.
+
+    \centering
+    ------------------------------------------------ \\
+    A side note on this is that the input current is highly discontinuous at the switching frequency. It does not have a ripple over a fixed current hence by the frequency decomposition, the component at the switching frequency is quite large. \\
+    -------------------------------------------------- \\
+    \raggedright
+    
+    For the secondary side, same analysis can be made. Again using the RMS value of the current over the transformer. This results in 7.33 parallel strands.
+
+    Primary wire count is number of parallel strands multiplied with the turn number,
+
+    \begin{equation*}
+        \textrm{Primary Wire Area} = N_{pri} \cdot primary\_parallel = 1.9391\cdot 10^{-5}
+    \end{equation*}
+
+    For the secondary
+
+    \begin{equation*}
+        \textrm{Secondary Wire Area} = N_{pri} \cdot turns\_ratio \cdot secondary\_parallel = 1.7064\cdot 10^{-5}
+    \end{equation*}
+
+    Numbers seem high however this consist of both parallel strands and the full wire length and it will be used to calculate the fill factor.
+    \begin{equation*}
+        \textrm{Fill Factor} = \textrm{Total Wire Area} / \textrm{Total Window Area} =   31.87 \%
+    \end{equation*}
+
+    Although the parallel wires are effectively acting as litz wires, a design with the actual litz wires are made, The design is given below and the total copper and fill factor are similar. This second design is expected to be better since the proximity and skin effect related losses will be less.
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|l}
+        \cline{1-2}
+        \textbf{Turn Numbers} & \textbf{Wire Diameter and \# of Parallel} &  \\ \cline{1-2}
+        9                         & 1.8 mm $\cross$ 1                                &  \\ \cline{1-2}
+        36                         & 0.9 mm $\cross$ 2                                  &  \\ \cline{1-2}
+        \end{tabular}
+        \caption{Transformer Winding Design with Litz Wire}
+        \label{tab:DCM}
+    \end{table}
+
+    The fill factor of the design with litz wire is calculated as $30\%$
+
+    This fill factors are both within the reasonable limits. The fill factors of 30 percent can be easily wound. The expected fill factor is actually will be smaller since the litz wire have around 1.28 packing factor which means that it has 0.22 percent empty spaces inside. On the hand created litz case, this is expected to be lower.
+
+    \subsection{Losses}   
+    \subsubsection{Copper Loss}
+    For the copper loss we need to calculate the wire primary and secondary, total wire lengths.
+
+    The primary wire length calculated is 0.3341 meters. The secondary counterpart is 2.6964 meters.
+
+    The resistance is calculated as,
+
+    \begin{equation*}
+        \textrm{R\_pri} = \frac{\rho l_{pri}}{A\cdot N_{parallel}} = 0.0056 \Omega
+    \end{equation*}    
+
+    \begin{equation*}
+        \textrm{R\_sec} = \frac{\rho l_{sec}}{A\cdot N_{parallel}} = 0.0911 \Omega
+    \end{equation*}    
+
+    Power is then $P = i\cdot R^2$ with the RMS currents.
+
+    The total copper loss is, for primary 0.1586 W and for secondary 0.1916 W.
+
+    Total is calculated at the highest currents hence the performance will be better.
+
+    \subsubsection{Core Loss}
+
+    The core loss is calculated from the power loss density and the peak magnetic flux density curves at fixed frequency given by the manufacturer on the datasheet of the related core.
+
+    These are empirical values and the our selected data is from 200 kHz line.
+
+    The datapoints from the datasheet is digitized on matlab and a polynomial equation is fitted. 
+
+    The magnetic flux density is different on the side legs of the E core than the center leg hence two volumes are calculated seperately. 
+
+    The total loss is calculated from the $\Delta B $ but the data is for AC magnetic flux variation hence $\Delta B $ given is expected as the right approach for more accurate calculation. A safety factor of 2 is given for margins of errors. The total core loss for highest operation is found as 1.22 W.
+    
+
+
+    
+    
+
+    
+
+\section{Computer Simulations \& Analysis}
+
+    \subsection{Ideal Simulations}
+    After determining a value for $L_m$, ideal simulations are done in LTspice. Ideal Flyback converter circuit constructed for the simulation is given in Figure \ref{fig:ideal_sim_circuit}. The model includes an ideal diode, an almost ideal switch, an ideal transformer model with magnetizing inductance, and an output capacitance whose value is calculated to make output peak-to-peak voltage ripple equal to $2\%$. The components named with "spice magic" are only included to increase simulation speed.  \\
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Ideal/ideal_simulation_circuit.PNG}
+        \caption{Simulated LTspice circuit schematic (ideal case)}
+        \label{fig:ideal_sim_circuit}
+    \end{figure}
+
+    The design choices were made so that the magnetizing current ripple is at least $40\%$. Primary and secondary current waveforms are given in Figures \ref{fig:ideal_Lm_ripples_12V} and \ref{fig:ideal_Lm_ripples_18V} for $12V$ and $18V$ input voltages, respectively. As one can see, we have desired current ripple which is consistent with our design. \\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Ideal/ideal_Lm_ripples_12V.PNG}
+        \caption{Primary and secondary current waveforms for 12V input voltage}
+        \label{fig:ideal_Lm_ripples_12V}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Ideal/ideal_Lm_ripples_18V.PNG}
+        \caption{Primary and secondary current waveforms for 18V input voltage}
+        \label{fig:ideal_Lm_ripples_18V}
+    \end{figure}
+
+    We also observed the voltage stresses on the diode and on the switch in the simulation. The expected switch voltage during the off times are calculated as $V_{SW} = V_s + V_o\frac{N1}{N2} = 30V$, which is calculated for 18V input voltage (worst case). Also, the diode voltage is calculated as $V_D = V_s\frac{N2}{N1}+V_o = 120V$ during on times of the switch, again for the worst case. One can see from Figure \ref{fig:ideal_V_stress} that the simulation result is consistent with the theoretical one. \\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Ideal/ideal_diode_switch_stresses_Vs_18V.PNG}
+        \caption{Diode and switch voltage stresses for 18V input voltage}
+        \label{fig:ideal_V_stress}
+    \end{figure}
+
+    Finally, the output voltage ripple can be calculated using the equation $\frac{\Delta V_o}{V_o} = \frac{D}{RC f_s} \approx 2\%$. One can see it is consistent with Figure \ref{fig:ideal_Vo}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Ideal/ideal_Vo_ripple_2.6uF.PNG}
+        \caption{Output voltage waveform}
+        \label{fig:ideal_Vo}
+    \end{figure}
+    
+    \subsection{Non-ideal Simulations}
+    The parasitic effects, leakage inductances (which are calculated as 1\% in the former sections), and non-ideal semiconductors are added to the ideal circuit. When we include the parasitic effects and simulate the circuit for 12V input voltage, the leakage inductance creates high voltage stress on the MOSFET during the transition to off-state. This will not blow up our MOSFET as the avalanche energy of the MOSFET is enough to absorb all the energy stored in the leakage inductance. However, since the voltage swing caused by the ringing will be too high, we either had to design a snubber or use a TVS (Transient Voltage Suppression) diode. We made simulations with a TVS diode with 30V rating, which is also included in the schematic. The non-ideal model of the circuit can be seen in Figure \ref{fig:non-ideal_sim_circuit}. \\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Non-ideal/non-ideal_simulation_circuit.PNG}
+        \caption{Simulated LTspice circuit schematic (non-ideal case)}
+        \label{fig:non-ideal_sim_circuit}
+    \end{figure}
+
+    Still, there will be some amount of ringing due to the unsuppressed energy. We will see its effect on the transients of the waveforms. The non-ideal simulation results for magnetizing current ripples are given in Figure \ref{fig:ideal_Lm_ripple}. The voltage stress on the switch is seen in Figure \ref{fig:non-ideal_V_stress}. Finally, the output voltage waveform is given in Figure \ref{fig:non-ideal_output}. Note that with the duty for ideal case (which is 50\% for 12V input) the output voltage is reduced to 40V. However, since the analog IC does close-loop control, it can increase the duty as much as it is required. Figure \ref{fig:non-ideal_output} shows the output voltage for 12V and 54\% duty, also showing that our circuit is still stable at this operating point.\\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Non-ideal/non-ideal_Lm_ripples_12V.PNG}
+        \caption{Primary and secondary current waveforms for 12V input voltage (non-ideal case)}
+        \label{fig:non-ideal_Lm_ripple}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Non-ideal/non-ideal_diode_switch_stresses_Vs_12V.PNG}
+        \caption{Switch voltage stress for 12V input voltage (non-ideal case)}
+        \label{fig:non-ideal_V_stress}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/Spice_Sim/Non-ideal/non-ideal_output_54duty.PNG}
+        \caption{Output voltage ripple with 54\% duty (non-ideal case)}
+        \label{fig:non-ideal_output}
+    \end{figure}
+
+    
+\section{Component Selection}
+
+    Aside from the core, which was luckily found, there are 4 components to choose.
+\begin{itemize}
+    \item IC: UC3843AN \cite{ic}. 
+
+    The criteria in choosing the PWM controller IC were that it is able to operate at out input voltage range so that no auxilliary windings are necessary and that it has no PWM limit. 
+
+    UC3843AN satisfies both constraints. It operates at voltages higher than 8V and can provide 100\% duty cycle. A separate feedback network can be built and connected to the IC for closed loop operation. Moreover, it can provide up to 1A gate current. 
+
+    \item MOSFET: CSD19534Q5A \cite{mos}
+
+    The most important criteria in MOSFET selection are rated voltage and current as well as slew rate. CSD19534Q5A has 100V rating in addition to having 10A current rating. This MOS also benefits from low losses thanks to $12.6 m\Omega$ on resistance.  
+
+    \item Diode: PDS3200-13 \cite{diode}.
+
+    The diode in the flyback converter suffers from high voltage stress because of secondary turn number being higher and the transformer polarity being reversed. In our simulations we saw the diode voltage climbed as much as 120V. Therefore we chose PDS3200-13, which has 200V, 3A rating as well as 780 mV forward voltage.
+
+    \item Ceramic Capacitor: CL31B225KCHSNNE \cite{cap}.
+
+    The output capacitor is chosen as $2.2\mu$F CL31B225KCHSNNE and two of these will be connected in parallel. The device itself is rated for 100V which is above 48V for safety reasons. Moreover,  the datasheet provides ESR vs frequency rating for the device and at 200 KHz this capacitor have approximately $30m\Omega$ ESR. Two of them in parallel have even lower ESR.
+
+    \item Core clamp: B66232A2010X000 \cite{clamp}
+
+    We have also selected a core clamp according to dimensions of our E core.
+\end{itemize}
+
+\section{Discussions  \& Future Work}
+    Magnetic design and the simulations for the specific requirements of the project is completed successfully. The next steps will be to wound the core with the determined parameter, and make the necessary measurements using LCR meter. We actually miscalculated $L_m$ as $30 \mu H$ at first and wound the primary winding according to that. We observed that we made consistent calculations with the measurement, which is seen in Figure \ref{fig:experiment}. After we wound the core, we will finalize our design and draw our PCB to be produced.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{img/wounded_core.jpeg}
+        \caption{Proof-of-concept inductance measurement}
+        \label{fig:experiment}
+    \end{figure}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+
+
+\begin{thebibliography}{00}
+    \bibitem{core}https://www.ferroxcube.com/upload/media/product/file/Pr\_ds/E30\_15\_7.pdf
+    \bibitem{ic} https://ozdisan.com/entegre-devreler-ics/guc-entegreleri/dc-dc-voltaj-kontrolorleri/UC3843AN/732711
+    \bibitem{mos} https://ozdisan.com/Product/Detail/594986/CSD19534Q5A
+    \bibitem{diode} https://www.digikey.com/en/products/detail/diodes-incorporated/PDS3200-13/697102 
+    \bibitem{cap} https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL31B225KCHSNNE/3888796
+    \bibitem{clamp} https://www.digikey.com/en/products/detail/epcos-tdk-electronics/B66232A2010X000/3915550
+    \bibitem{dcm} https://www.icbanq.com/icbank\_data/online\_seminar\_image/Flyback\_CCMVsDCM\_Rev1p2.pdf
+    
+\end{thebibliography}
+
+\end{document}
