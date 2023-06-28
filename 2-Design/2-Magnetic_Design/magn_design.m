@@ -76,6 +76,8 @@ Lm = 12e-6;
 %% Choose Gap Length and Turn Number
 % https://www.ferroxcube.com/upload/media/product/file/Pr_ds/E30_15_7.pdf
 
+% TO DO: Add core reluctance to the gap reluctance for further calculations
+
 % Permeability of air
 mu0 = 4*pi*1e-7;
 
@@ -83,6 +85,7 @@ mu0 = 4*pi*1e-7;
 A = 30.80e-3;
 B = 19.50e-3;
 C = 7.20e-3;
+D = 15e-3;
 F = 7.30e-3;
 E = 9.3e-3;
 
@@ -109,36 +112,19 @@ reluctance = 6750000 ;
 gap = 0.2723e-3;
 N_pri = 9;
 
-
-%% Determine Cable Length and Type
-
-% Set cable diameters:
-
-primary_parallel = 1; % how many parallel cables there are 
-primary_cable_diameter = 1.4e-3;
-primary_cable_count = N_pri*primary_parallel;
-
-secondary_parallel = 1; % how many parallel cables there are 
-secondary_cable_diameter = 0.9e-3;
-secondary_cable_count = N_pri*N*secondary_parallel;
-
-total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
-
-window_area = ((B-C)/2)*2*E;
-fill_factor_litz = total_cable_area/window_area;
-
-
 %% AWG
-resistivity = 1.68e-8;
-skin_depth = sqrt(resistivity/(pi*fs*mu0*1)) ; % in meters
+% Determine Cable Length and Type
+cu_resistivity = 1.68e-8;
+skin_depth = sqrt(cu_resistivity/(pi*fs*mu0*1)) ; % in meters
 
-strand_radius = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
+strand_section = pi*skin_depth^2*1e6 ; % 0.0668 mm^2 nearly 29 AWG
 
-risk_factor = 0.5;
+risk_factor = 0.75;
+
+% TO DO: I_in should be RMS
 strand_pri = max(I_in_avg)/(0.182*risk_factor); % 29 AWG current rating 0.182 A
 strand_sec = (Po/Vo)/(0.182*risk_factor) ; % 29 AWG current rating 0.182 A
-
-%% Determine Cable Length and Type
+% Determine Cable Length and Type
 
 % Set cable diameters:
 
@@ -155,17 +141,86 @@ total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(se
 window_area = ((B-C)/2)*2*E;
 fill_factor_awg = total_cable_area/window_area;
 
+
+
+%% Litz
+% Determine Cable Length and Type
+
+% Set cable diameters:
+primary_parallel = 1; % how many parallel cables there are 
+primary_cable_diameter = 1.8e-3;
+primary_cable_count = N_pri*primary_parallel;
+
+secondary_parallel = 2; % how many parallel cables there are 
+secondary_cable_diameter = 0.9e-3;
+secondary_cable_count = N_pri*N*secondary_parallel;
+
+% https://www.elektrisola.com/en/Litz-Wire/Info
+litz_packing_factor = 1.28 ;
+total_cable_area = pi*(primary_cable_diameter/2)^2*primary_cable_count +  pi*(secondary_cable_diameter/2)^2*secondary_cable_count;
+% total_cable_area = litz_packing_factor*total_cable_area;
+
+window_area = ((B-C)/2)*2*E;
+fill_factor_litz = total_cable_area/window_area;
+
+% TO DO: winding configuration sec/2 : pri : sec/2
+
 %% Determine Max B
 I_pri_peak = I_Lm_avg+I_Lm_avg.*ripple_ratio./2;
 Phi = (N_pri.*(I_pri_peak))./reluctance;
-B_field = (Phi)./((A-B)*F);
-B_field_2 = (Phi)./(C*F);
+B_field_sides = (Phi)./((A-B)*F); % side gap
+B_field_center = (Phi)./(C*F); % center gap
 
 
-plot(D_vec, B_field_2)
+plot(D_vec, B_field_center)
 title("Core flux density vs duty cycle")
 hold on
-plot(D_vec,B_field)
+plot(D_vec,B_field_sides)
 grid minor
+
+%% Power Loss
+
+% Core Loss
+% https://elnamagnetics.com/wp-content/uploads/library/Ferroxcube-Materials/3C94_Material_Specification.pdf
+
+% Coefficients (with 95% confidence bounds):
+p1 =   8.892e-05;
+p2 =     0.01501;
+p3 =      -0.775;
+p4 =       17.63;
+
+P_density_center = p1.*(B_field_center.*1000.*ripple_ratio).^3 + p2.*(B_field_center.*1000.*ripple_ratio).^2 + p3.*(B_field_center.*1000.*ripple_ratio) + p4; % mT -> kW per m^3
+P_center = P_density_center.*(C*D*F*2)*1000 ;% core center volume
+
+P_density_sides = p1.*(B_field_sides.*1000.*ripple_ratio).^3 + p2.*(B_field_sides.*1000.*ripple_ratio).^2 + p3.*(B_field_sides.*1000.*ripple_ratio) + p4; % mT -> kW per m^3
+P_sides = P_density_sides.*(((A-B)*F*2*D)+((B-C)*(D-E)*F*2))*1000 ;  % core center volume
+
+P_core = (P_center + P_sides)*2 ; % an error margin of 200 % is given
+
+% Copper Loss for litz wire
+% AC losses proximity and skin effect can be ignored
+% Length of the wires is estimated from the middle radius
+
+end_winding_pri = 0.265;
+end_winding_sec = 0.080;
+
+lenght_pri = primary_cable_count*(2*(C+0.005+primary_cable_diameter/2)+2*(F+0.005+primary_cable_diameter/2));
+lenght_sec = secondary_cable_count*(((A+B)/2*2)+(5e-3+F)*2) ;
+
+R_meas_pri = 18e-3;
+R_pri = (cu_resistivity*lenght_pri)/(primary_parallel*pi*(primary_cable_diameter/2)^2*primary_parallel/litz_packing_factor);
+R_pri = R_meas_pri*lenght_pri/(lenght_pri+end_winding_pri);
+
+R_meas_sec = 102e-3;
+R_sec = (cu_resistivity*lenght_sec)/(secondary_parallel*pi*(secondary_cable_diameter/2)^2*secondary_parallel/litz_packing_factor);
+R_sec = (R_meas_sec*lenght_sec/secondary_parallel)/(lenght_sec/secondary_parallel+end_winding_sec)
+
+P_cu_pri = R_pri*5.3*5.3;
+P_cu_sec = R_sec*1.45*1.45;
+
+P_cu_total = P_cu_pri + P_cu_sec ;
+
+% https://downloads.hindawi.com/archive/2012/635715.pdf
+L_leak = (mu0*N_pri^2*((0.00016)*2+((B-C)/2))*(F*E+D*(C+2*(((B-C)/2)))))/(3*2^2*E^2);
 
 
